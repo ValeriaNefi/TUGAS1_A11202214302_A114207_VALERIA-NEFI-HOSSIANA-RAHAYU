@@ -1,68 +1,106 @@
-/*Nama    : Valeria Nefi Hossiana Rahayu
-NIM     : A11.2022.14302
-Kelas   : A11.4207
-Judul   : Penjumlahan, Pengurangan, Perkalian Dua Bilangan, serta Total dan Rata-Rata Array
+/*
+NAMA        : VALERIA NEFI HOSSIANA RAHAYU
+NIM         : A11.2022.14302
+KELOMPOK    : A11.4207
 */
+
 #include <iostream>
 
 using namespace std;
 
-int tambah(int a, int b){
-    return a+b;
+bool isEven(int x){
+    return x%2==0? 1:0;
 }
-int kurang(int a, int b){
-    return a-b;
+bool isOdd(int x){
+    return x%2==1? 1:0;
 }
-int kali(int a, int b){
-    return a*b;
+bool isFactor(int x,int y){
+    return x%y==0? 1:0;
 }
-int result(int arr[], int x){
-    int jumlah = 0;
-    for(int i=0; i<x; i++){
-        jumlah+=arr[i];
+int maxN(int x,int y){
+    int z;
+    if(x>y){
+        z=x;
+    }else{
+        z=y;}
+    return z;
+}
+int minN(int x,int y){
+    int z;
+    if(x<y){
+        z=x;
+    }else{
+        z=y;}
+    return z;
+}
+int maxArray(int a[],int n){
+    int temp=0;
+    for(int i=0;i<=n;i++){
+        temp=maxN(temp,a[i]);
     }
-    return jumlah;
+    return temp;
 }
-float average(int arr[], int x){
-    float jumlah = 0;
-    for(int i=0; i<x; i++){
-        jumlah+=arr[i];
+int minArray( int a[],int g) {
+    int temp = 99999999;
+    for ( int i=1;i<=g;i++) {
+         if (a[i]<temp){
+            temp=a[i];
+         }
     }
-    return jumlah/=x;
+    return temp;
 }
+bool isFound(int x, int a[],int n);
+void swapN(int x,int y);
 
+int x,y,n,p;
 
 int main()
 {
-    int a, b, x;
-    cout<<"==============================================="<<endl;
-    cout<<"\tPROGRAM KALKULATOR SEDERHANA"<<endl;
-    cout<<"==============================================="<<endl;
-    cout<<"Program Penjumlahan, Pengurangan, dan Perkalian"<<endl;
-    cout<<"==============================================="<<endl;
-    cout<<"\nMasukkan Nilai Pertama \t= ";
-    cin>>a;
-    cout<<"Masukkan Nilai Kedua \t= ";
-    cin>>b;
-    cout<<"\n==============================================="<<endl;
-    cout<<"\nHasil Penjumlahan \t= "<<a<<" + "<<b<<" = "<<tambah(a,b)<<endl;
-    cout<<"Hasil Pengurangan \t= "<<a<<" - "<<b<<" = "<<kurang(a,b)<<endl;
-    cout<<"Hasil Perkalian \t= "<<a<<" * "<<b<<" = "<<kali(a,b)<<endl;
-    cout<<endl;
-    cout<<"==============================================="<<endl;
-    cout<<"\tProgram Total dan Rata-Rata"<<endl;
-    cout<<"==============================================="<<endl;
-    cout<<"\tMasukkan Jumlah Inputan Array = ";
-    cin>>x;
-    cout<<"\n\t    ========================\t\t"<<endl;
-    int ar[x];
-    for(int i=0; i<x; i++){
-        cout<<"\t   Masukkan Array index ke-"<<i<<" =";
-        cin>>ar[i];
+
+    cout <<"Masukkan Angka Pertama  = ";
+    cin  >>x;
+    cout <<"Masukkan Angka Kedua    = ";
+    cin  >>y;
+    cout <<"Masukkan Jumlah Array   = ";
+    cin >>n;
+    int aray[n]={};
+    for (int i=1;i<=n;i++){
+        cout <<"Masukkan Array ke-"<<i<<" = ";
+        cin  >>aray[i];
     }
-    cout<<"\n==============================================";
-    cout<<"\n\nTotal Inputan Array \t\t= "<< result(ar,x)<<endl;
-    cout<<"Rata-Rata Inputan Array \t= "<< average(ar,x)<<endl<<endl;
-    cout<<"==============================================="<<endl;
+    cout <<"\n";
+
+    cout <<"1 = True    0 = False"<<endl;
+    cout <<"Apakah "<<x<<" itu genap ? "<<isEven(x)<< endl;
+    cout <<"Apakah "<<x<<" itu ganjil ? "<<isOdd(x)<< endl;
+    cout <<"Apakah "<<y<<" faktor dari "<<x<<" ? "<<isFactor(x,y)<< endl;
+    cout <<"\n";
+    cout <<"Angka paling besar adalah = "<<maxN(x,y)<<endl;
+    cout <<"Angka paling kecil adalah = "<<minN(x,y)<<endl;
+    cout <<"\n";
+    cout <<"Angka paling besar dalam array adalah = "<<maxArray(aray,n)<<endl;
+    cout <<"Angka paling kecil dalam array adalah = "<<minArray(aray,n)<<endl;
+    cout <<"Masukkan angka yang ingin dicari dalam array = ";
+    cin  >>p;
+    cout <<"Apakah ada "<<p<<" di dalam array? "<<isFound(p,aray,n)<<endl;
+    swapN(x,y);
     return 0;
+}
+
+bool isFound(int x,int a[],int n){
+    for(int i=1;i<=n;i++){
+        if(x==a[i]){
+            return true;
+        }
+    }
+    return false;
+}
+void swapN(int x,int y){
+    int temp;
+    temp=x;
+    x=y;
+    y=temp;
+    cout<<"Angka pertama menjadi = "<<x<<endl;
+    cout<<"Angka kedua menjadi   = "<<y<<endl;
+
 }
